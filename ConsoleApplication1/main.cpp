@@ -46,7 +46,7 @@ int main() {
     HashFn fns[4] = { hashDjb2, hashSum, hashPoly, hashRot };
 
     std::ofstream csv("results.csv");
-    csv << "dataset;function;collisions;max_chain\n";
+    csv << "dataset;function;collisions;max_probes\n";
 
     for (int d = 0; d < 3; d++) {
         if (d == 0) fillRandom();
@@ -58,9 +58,9 @@ int main() {
             for (int i = 0; i < n; i++) add(data[i], fns[k]);
 
             std::cout << setNames[d] << "\t" << fnNames[k] << "\t"
-                << collisions << "\t" << maxChain() << std::endl;
+                << collisions << "\t" << maxProbes << std::endl;
             csv << setNames[d] << ";" << fnNames[k] << ";"
-                << collisions << ";" << maxChain() << "\n";
+                << collisions << ";" << maxProbes << "\n";
         }
     }
     return 0;
